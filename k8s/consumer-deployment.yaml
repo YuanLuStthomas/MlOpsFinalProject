@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlops-final-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlops-final-consumer
+  template:
+    metadata:
+      labels:
+        app: mlops-final-consumer
+    spec:
+      containers:
+      - name: consumer
+        image: mlops-final-consumer:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PROJECT_BUCKET
+          value: "mlops-final-yuanlu-20260330"
+        - name: QUEUE_URL
+          value: "https://sqs.us-east-1.amazonaws.com/603579126865/mlops-final-inference-queue"
+        - name: MODEL_KEY
+          value: "models/model.pkl"
+        - name: PRED_PREFIX
+          value: "predictions"
+        envFrom:
+        - secretRef:
+            name: aws-creds

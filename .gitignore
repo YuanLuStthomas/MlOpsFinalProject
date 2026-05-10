@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# venv
+.venv/
+venv/
+.env
+
+# Airflow local state
+airflow_home/
+logs/
+
+# Local model artifacts
+models/
+data/
+
+# OS
+.DS_Store
+*.bak

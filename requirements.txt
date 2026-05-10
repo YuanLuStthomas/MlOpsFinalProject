@@ -1,0 +1,7 @@
+apache-airflow==2.10.2
+# if airflow install complains, we will add constraints next
+boto3
+pandas
+numpy
+scikit-learn
+joblib
